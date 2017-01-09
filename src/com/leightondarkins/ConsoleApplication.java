@@ -9,7 +9,11 @@ public class ConsoleApplication {
         this.out = out;
     }
 
-    public void WriteToConsole() {
-        out.print("test");
+    public void WriteToConsole(String value) {
+        out.print(value);
+    }
+
+    public void WriteToConsoleWithNewLine(String value) {
+        out.println(value);
     }
 }

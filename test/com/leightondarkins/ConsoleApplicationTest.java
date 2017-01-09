@@ -30,14 +30,41 @@ public class ConsoleApplicationTest {
     }
 
     @Test
-    public void oneShouldEqualOne() {
-        assertEquals(1,1);
+    public void WriteToConsole_ShouldWrite_Test() {
+        subject.WriteToConsole("test");
+
+        assertEquals("test", outContent.toString());
     }
 
     @Test
-    public void WriteToConsole_ShouldWrite_Test() {
-        subject.WriteToConsole();
+    public void WriteToConsole_ShouldWrite_Banana() {
+        subject.WriteToConsole("banana");
 
-        assertEquals("test", outContent.toString());
+        assertEquals("banana", outContent.toString());
+    }
+
+    @Test
+    public void Calling_WriteToConsole_MultipleTimes_Should_AddTheCorrectValuesToTheOutput() {
+        subject.WriteToConsole("test");
+        subject.WriteToConsole("banana");
+        subject.WriteToConsole("cheese");
+
+        assertEquals("testbananacheese", outContent.toString());
+    }
+
+    @Test
+    public void WriteToConsoleWithNewLine_ShouldWrite_Test_WithNewLine() {
+        subject.WriteToConsoleWithNewLine("test");
+
+        assertEquals("test\n", outContent.toString());
+    }
+
+    @Test
+    public void Callind_WriteToConsoleWithNewLine_MultipleTimes_Should_AddTheCorrectValuesToTheOutput() {
+        subject.WriteToConsoleWithNewLine("test");
+        subject.WriteToConsoleWithNewLine("banana");
+        subject.WriteToConsoleWithNewLine("cheese");
+
+        assertEquals("test\nbanana\ncheese\n", outContent.toString());
     }
 }
